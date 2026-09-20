@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #030712;
+  color: white;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.theme-light body {
+  background: #f6f8fb;
+  color: #0f172a;
+}
+
+.theme-light .bg-void,
+.theme-light .bg-slate-950\/55,
+.theme-light .bg-slate-950\/35 {
+  background-color: rgba(248, 250, 252, 0.92);
+}
+
+.theme-light .bg-white\/\[0\.08\],
+.theme-light .bg-white\/\[0\.04\],
+.theme-light .bg-white\/8,
+.theme-light .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.82);
+}
+
+.theme-light .border-white\/10,
+.theme-light .border-white\/12,
+.theme-light .border-white\/15 {
+  border-color: rgba(15, 23, 42, 0.14);
+}
+
+.theme-light .text-white,
+.theme-light .text-slate-100,
+.theme-light .text-slate-200 {
+  color: #0f172a;
+}
+
+.theme-light .text-slate-300,
+.theme-light .text-slate-400,
+.theme-light .text-slate-500 {
+  color: #475569;
+}
+
+.theme-light input,
+.theme-light textarea,
+.theme-light select {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  color: #0f172a !important;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #fff, #67e8f9, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass-input:-webkit-autofill {
+  -webkit-text-fill-color: #fff;
+  transition: background-color 99999s ease-in-out 0s;
+}

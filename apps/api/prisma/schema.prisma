@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @default(cuid())
+  email         String          @unique
+  passwordHash  String?
+  googleId      String?         @unique
+  name          String?
+  degree        String?
+  college       String?
+  targetRole    String?         @default("Software Engineer")
+  languages     String[]        @default([])
+  onboarded     Boolean         @default(false)
+  avatarUrl     String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  resumes       Resume[]
+  analyses      ResumeAnalysis[]
+  chats         ChatMessage[]
+  interviews    Interview[]
+  codingHistory CodingQuestion[]
+  roadmap       CareerRoadmap?
+}
+
+model Resume {
+  id        String   @id @default(cuid())
+  userId    String
+  fileName  String
+  fileUrl   String?
+  mimeType  String
+  rawText   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ResumeAnalysis {
+  id              String   @id @default(cuid())
+  userId          String
+  resumeId        String?
+  score           Int
+  atsScore        Int
+  skills          String[] @default([])
+  education       Json
+  projects        Json
+  experience      Json
+  strengths       String[] @default([])
+  weaknesses      String[] @default([])
+  missingSkills   String[] @default([])
+  suggestions     String[] @default([])
+  targetRole      String
+  companyReadiness Json
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  userId    String
+  role      String
+  content   String
+  context   Json?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Interview {
+  id                 String   @id @default(cuid())
+  userId             String
+  company            String
+  role               String
+  questions          Json
+  answers            Json
+  communicationScore Int
+  technicalScore     Int
+  confidenceScore    Int
+  feedback           String
+  createdAt          DateTime @default(now())
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CodingQuestion {
+  id          String   @id @default(cuid())
+  userId      String
+  difficulty  String
+  category    String
+  prompt      String
+  solution    String
+  explanation String
+  feedback    String
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CareerRoadmap {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  role      String
+  milestones Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
