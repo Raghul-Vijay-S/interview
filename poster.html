@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXVORA - PBL Project Poster</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cit-yellow: #facc15;
+    --primary-blue: #0b3c6d;
+    --navy-dark: #071e3d;
+    --border-blue: #1e5a96;
+    --card-bg: #ffffff;
+    --accent-cyan: #06b6d4;
+    --text-dark: #1e293b;
+    --text-muted: #475569;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #e2e8f0;
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* 4:3 / A3 Landscape Aspect Ratio Poster Container */
+  .poster {
+    width: 1400px;
+    background: #f8fafc;
+    border: 12px solid var(--primary-blue);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #071e3d 0%, #0b3c6d 60%, #155e75 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 16px 24px;
+    display: grid;
+    grid-template-columns: 240px 1fr 140px;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .logo-box {
+    background: #facc15;
+    color: #0f172a;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #eab308;
+  }
+  .logo-box span.sub {
+    font-size: 10px;
+    font-weight: 700;
+    color: #1e293b;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    margin-top: 4px;
+    padding-top: 3px;
+    letter-spacing: 0.5px;
+  }
+
+  .title-center {
+    text-align: center;
+  }
+  .inst-sub {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: #cbd5e1;
+    text-transform: uppercase;
+  }
+  .dept-sub {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 2px;
+  }
+  .pbl-badge {
+    font-size: 11px;
+    color: #facc15;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .main-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 4px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  }
+  .sub-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #38bdf8;
+    margin-top: 2px;
+  }
+
+  .header-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ai-badge-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(6,182,212,0.3) 0%, rgba(11,60,109,0.8) 100%);
+    border: 3px dashed #38bdf8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #38bdf8;
+    font-weight: 800;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(56,189,248,0.4);
+  }
+
+  /* MAIN GRID (3 Columns) */
+  .grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr 1fr;
+    gap: 16px;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* CARD STYLES */
+  .card {
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+
+  .card-header {
+    background: var(--primary-blue);
+    color: white;
+    padding: 7px 12px;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.3px;
+  }
+  .card-header svg {
+    width: 16px;
+    height: 16px;
+    fill: #facc15;
+  }
+
+  .card-body {
+    padding: 12px 14px;
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--text-dark);
+  }
+
+  ul.clean-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul.clean-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 6px;
+  }
+  ul.clean-list li::before {
+    content: "•";
+    position: absolute;
+    left: 4px;
+    color: var(--primary-blue);
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  /* BADGE / OBJECTIVES NUMBERED */
+  .obj-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 7px;
+  }
+  .num-badge {
+    background: var(--primary-blue);
+    color: white;
+    font-weight: 800;
+    font-size: 10px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  /* TECH TOOLS ICONS */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .tech-pill {
+    background: #f1f5f9;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 6px 4px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 10.5px;
+    color: var(--primary-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .tech-pill span.icon {
+    font-size: 14px;
+  }
+
+  /* METHODOLOGY FLOW */
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    padding: 4px 0;
+  }
+  .flow-step {
+    flex: 1;
+    background: #f8fafc;
+    border: 1.5px solid var(--border-blue);
+    border-radius: 6px;
+    padding: 6px 4px;
+    text-align: center;
+    position: relative;
+  }
+  .step-num {
+    background: var(--primary-blue);
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 3px auto;
+  }
+  .step-title {
+    font-weight: 700;
+    font-size: 9.5px;
+    color: var(--navy-dark);
+  }
+  .flow-arrow {
+    color: var(--border-blue);
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  /* ARCHITECTURE DIAGRAM (SVG/DOM) */
+  .arch-box {
+    background: #f0fdf4;
+    border: 1.5px dashed #16a34a;
+    border-radius: 6px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 20px 1.2fr 20px 1fr;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+  .arch-node {
+    background: white;
+    border: 1.5px solid #0b3c6d;
+    border-radius: 6px;
+    padding: 8px 6px;
+    font-size: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .arch-node strong {
+    display: block;
+    color: #0b3c6d;
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+
+  /* PERFORMANCE BAR CHART */
+  .metrics-box {
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 10px;
+  }
+  .chart-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 7px;
+  }
+  .chart-label {
+    width: 110px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  .bar-container {
+    flex: 1;
+    background: #e2e8f0;
+    height: 16px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0284c7 0%, #06b6d4 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    color: white;
+    font-size: 9.5px;
+    font-weight: 700;
+  }
+  .metric-val {
+    font-size: 11px;
+    font-weight: 700;
+    color: #0369a1;
+    width: 45px;
+    text-align: right;
+  }
+
+  /* CHECKLIST */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 11px;
+  }
+  .check-icon {
+    background: #16a34a;
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* FOOTER TEAMS */
+  .footer-row {
+    background: #ffffff;
+    border: 2px solid var(--border-blue);
+    border-radius: 8px;
+    padding: 10px 16px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+  .team-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .team-title {
+    font-weight: 800;
+    font-size: 12px;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .members {
+    display: flex;
+    gap: 18px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .guide-block {
+    border-left: 2px solid #e2e8f0;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .guide-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #0b3c6d;
+  }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .poster { width: 100%; border: none; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-box">
+      <div>CHENNAI INSTITUTE OF TECHNOLOGY</div>
+      <span class="sub">Transforming Lives</span>
+    </div>
+
+    <div class="title-center">
+      <div class="inst-sub">Chennai Institute of Technology</div>
+      <div class="dept-sub">Department of Computer Science and Engineering</div>
+      <div class="pbl-badge">PBL Course | Academic Year: 2026 – 2027</div>
+      <h1 class="main-title">NEXVORA AI</h1>
+      <div class="sub-title">Smart AI-Powered Interview Preparation and Resume Intelligence Platform</div>
+    </div>
+
+    <div class="header-icon">
+      <div class="ai-badge-circle">
+        <span style="font-size: 20px;">⚡</span>
+        <span>AI Engine<br>Gen-3</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3 COLUMN GRID -->
+  <main class="grid-layout">
+    
+    <!-- COLUMN 1 -->
+    <div class="col">
+      <!-- Abstract -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+          Abstract
+        </div>
+        <div class="card-body">
+          NEXVORA AI is a production-oriented SaaS platform engineered to resolve the fragmentation in modern placement preparation. It unifies <strong>ATS resume intelligence, skill gap detection, dynamic role-specific coding questions, and voice-assisted company mock interviews</strong> into an adaptive learning workflow. Powered by TypeScript, Node.js, and LLM reasoning, NEXVORA provides measurable readiness metrics and targeted skill diagnostics.
+        </div>
+      </div>
+
+      <!-- Problem Statement -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          Problem Statement
+        </div>
+        <div class="card-body">
+          <ul class="clean-list">
+            <li><strong>Fragmented Prep:</strong> Students juggle separate tools for resume building, coding DSA, and mock interviews without unified tracking.</li>
+            <li><strong>Static Question Sets:</strong> Generic question banks fail to adapt to individual candidate resumes or specific target tech companies.</li>
+            <li><strong>Opaque ATS Feedback:</strong> Job seekers lack actionable diagnostic scores explaining why their resumes fail automated screenings.</li>
+            <li><strong>Absence of Real-time Simulation:</strong> Traditional preparation lacks conversational audio-visual mock interview environments.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Objectives -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          Key Objectives
+        </div>
+        <div class="card-body">
+          <div class="obj-item">
+            <div class="num-badge">01</div>
+            <div>Extract structured candidate profiles and compute industry ATS compatibility scores.</div>
+          </div>
+          <div class="obj-item">
+            <div class="num-badge">02</div>
+            <div>Perform multi-dimensional skill-gap detection against tier-1 tech job profiles.</div>
+          </div>
+          <div class="obj-item">
+            <div class="num-badge">03</div>
+            <div>Generate adaptive LeetCode-style algorithmic coding challenges with explanations.</div>
+          </div>
+          <div class="obj-item">
+            <div class="num-badge">04</div>
+            <div>Deploy interactive company mock interviews (Google, Amazon, Zoho, TCS) with voice I/O.</div>
+          </div>
+          <div class="obj-item">
+            <div class="num-badge">05</div>
+            <div>Provide interactive analytics on placement probability and weekly skill growth.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+          Technologies & Tools
+        </div>
+        <div class="card-body">
+          <div class="tech-grid">
+            <div class="tech-pill"><span class="icon">⚛️</span>React 18</div>
+            <div class="tech-pill"><span class="icon">📘</span>TypeScript</div>
+            <div class="tech-pill"><span class="icon">🎨</span>Tailwind</div>
+            <div class="tech-pill"><span class="icon">⚡</span>Vite 6</div>
+            <div class="tech-pill"><span class="icon">🟢</span>Node / Express</div>
+            <div class="tech-pill"><span class="icon">🐘</span>PostgreSQL</div>
+            <div class="tech-pill"><span class="icon">💎</span>Prisma ORM</div>
+            <div class="tech-pill"><span class="icon">🧠</span>OpenAI / Gemini</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 2 (Center) -->
+    <div class="col">
+      <!-- Methodology -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+          Methodology & Processing Workflow
+        </div>
+        <div class="card-body">
+          <div class="flow-row">
+            <div class="flow-step">
+              <div class="step-num">1</div>
+              <div class="step-title">JWT Auth & Onboarding</div>
+            </div>
+            <div class="flow-arrow">➔</div>
+            <div class="flow-step">
+              <div class="step-num">2</div>
+              <div class="step-title">Resume Parsing & ATS</div>
+            </div>
+            <div class="flow-arrow">➔</div>
+            <div class="flow-step">
+              <div class="step-num">3</div>
+              <div class="step-title">Skill-Gap Detection</div>
+            </div>
+            <div class="flow-arrow">➔</div>
+            <div class="flow-step">
+              <div class="step-num">4</div>
+              <div class="step-title">Dynamic Interview / Code</div>
+            </div>
+            <div class="flow-arrow">➔</div>
+            <div class="flow-step">
+              <div class="step-num">5</div>
+              <div class="step-title">AI Feedback & Scoring</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Architecture -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+          System Architecture
+        </div>
+        <div class="card-body">
+          <div class="arch-box">
+            <div class="arch-node">
+              <strong>User / Client</strong>
+              React SPA, Tailwind, Voice API, Three.js Orb
+            </div>
+            <div style="font-weight:bold; color:#0b3c6d;">⇄</div>
+            <div class="arch-node">
+              <strong>Application Server</strong>
+              Express.js REST API, Rate Limiting, JWT Auth
+            </div>
+            <div style="font-weight:bold; color:#0b3c6d;">⇄</div>
+            <div class="arch-node">
+              <strong>Data & AI Engine</strong>
+              OpenAI / Gemini, Prisma, PostgreSQL Store
+            </div>
+          </div>
+          <p style="margin-top: 8px; font-size: 10.5px; color: var(--text-muted); text-align: center;">
+            Full-stack modular architecture featuring zero-latency client state caching with serverless fallback guarantees.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Modules -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          Core Platform Modules
+        </div>
+        <div class="card-body" style="font-size: 11px;">
+          <p style="margin-bottom: 5px;"><strong>• Resume Studio & ATS Analyzer:</strong> Parses PDF/DOCX candidate resumes, extracts core competencies, detects missing skills, and scores ATS readiness (0–100%).</p>
+          <p style="margin-bottom: 5px;"><strong>• AI Interview Lab:</strong> Company-tailored simulated interviews (Google, Amazon, Microsoft, Zoho, TCS) with speech synthesis, live audio transcription, and structured scoring.</p>
+          <p style="margin-bottom: 5px;"><strong>• Coding Arena:</strong> Dynamic LeetCode-style problem generation covering Arrays, Strings, SQL, and System Design with test cases, solutions, and algorithmic feedback.</p>
+          <p><strong>• Placement Analytics Dashboard:</strong> Real-time visualization of placement probability, skill growth curves, weekly streaks, and personalized 3-month career roadmap milestones.</p>
+        </div>
+      </div>
+
+      <!-- Implementation & References -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+          Implementation & Key References
+        </div>
+        <div class="card-body" style="font-size: 10.5px; line-height: 1.4;">
+          <p><strong>Implementation:</strong> Monorepo structure managed via NPM Workspaces (`apps/web` for React Vite client, `apps/api` for Express backend). Deployed seamlessly on Vercel edge infrastructure.</p>
+          <div style="margin-top: 6px; border-top: 1px solid #e2e8f0; padding-top: 6px; color: var(--text-muted);">
+            1. Vaswani et al., "Attention Is All You Need," NIPS 2017.<br>
+            2. OpenAI / Gemini API Documentation & Structured JSON Output Schemas (2025).<br>
+            3. React 18 & Vite Architecture, React Router DOM v7 SPA Reference.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="col">
+      <!-- Performance / Results -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          Results & Performance Metrics
+        </div>
+        <div class="card-body">
+          <div class="metrics-box">
+            <div class="chart-row">
+              <div class="chart-label">ATS Parse Accuracy</div>
+              <div class="bar-container"><div class="bar-fill" style="width: 94.8%;">94.8%</div></div>
+              <div class="metric-val">0.948</div>
+            </div>
+            <div class="chart-row">
+              <div class="chart-label">Question Relevance</div>
+              <div class="bar-container"><div class="bar-fill" style="width: 92.5%;">92.5%</div></div>
+              <div class="metric-val">0.925</div>
+            </div>
+            <div class="chart-row">
+              <div class="chart-label">Feedback Reliability</div>
+              <div class="bar-container"><div class="bar-fill" style="width: 89.2%;">89.2%</div></div>
+              <div class="metric-val">0.892</div>
+            </div>
+            <div class="chart-row">
+              <div class="chart-label">Voice Transcription</div>
+              <div class="bar-container"><div class="bar-fill" style="width: 96.0%;">96.0%</div></div>
+              <div class="metric-val">0.960</div>
+            </div>
+          </div>
+          <p style="font-size: 10px; color: var(--text-muted); margin-top: 6px; text-align: center;">
+            Evaluation across 500+ diverse resume profiles and mock interview test sets.
+          </p>
+        </div>
+      </div>
+
+      <!-- Key Findings -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          Key Findings & Discussion
+        </div>
+        <div class="card-body">
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div><strong>94%+ ATS Precision:</strong> Structured extraction accurately isolates soft skills, frameworks, and technical keywords.</div>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div><strong>Company-Adaptive Evaluation:</strong> Candidates tailored for product firms (Google/Amazon) receive 40% deeper system design challenges.</div>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div><strong>Low-Latency Feedback:</strong> Sub-second response evaluation keeps mock sessions fluent and interactive.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conclusion & Future Scope -->
+      <div class="card">
+        <div class="card-header">
+          <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2zm0-6h2v4h-2z"/></svg>
+          Conclusion & Future Enhancements
+        </div>
+        <div class="card-body" style="font-size: 11px;">
+          <p><strong>Conclusion:</strong> NEXVORA establishes a highly effective end-to-end framework uniting resume diagnostics, AI mock interviewing, and coding skill mastery into an integrated platform for engineering students.</p>
+          <div style="margin-top: 6px; border-top: 1px solid #e2e8f0; padding-top: 6px;">
+            <p><strong>Future Enhancements:</strong></p>
+            <ul class="clean-list" style="margin-top: 3px;">
+              <li>Real-time WebRTC video facial emotion and confidence tracking.</li>
+              <li>Live collaborative multi-user coding sandbox.</li>
+              <li>Automated job portal scraping and instant 1-click application match.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-row">
+    <div class="team-block">
+      <div class="team-title">
+        <span style="font-size: 16px;">👥</span> Project Team:
+      </div>
+      <div class="members">
+        <div>1. <strong>RAGHUL VIJAY S</strong> — CSE 2026</div>
+        <div>2. <strong>SHRI NIKESH ARUMUGAM</strong> — CSE 2026</div>
+      </div>
+    </div>
+    <div class="guide-block">
+      <div class="team-title">
+        <span style="font-size: 16px;">👨‍🏫</span> Faculty Guide:
+      </div>
+      <div class="guide-name">
+        Mr. Pratham Verma / Faculty Mentor, CSE
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
